@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Para mi amor | Flores Amarillas 🌻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', 'Dancing Script', cursive, sans-serif;
+            background: linear-gradient(135deg, #fff9e6 0%, #ffefc4 100%);
+            min-height: 100vh;
+            color: #5a3e1b;
+            overflow-x: hidden;
+        }
+
+        /* Flores flotantes */
+        .floating-flower {
+            position: fixed;
+            bottom: -50px;
+            font-size: 2rem;
+            opacity: 0.5;
+            animation: floatUp 9s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header romántico */
+        .hero {
+            background: linear-gradient(135deg, rgba(255, 235, 150, 0.95), rgba(255, 215, 100, 0.95));
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #ffb347;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "❤️";
+            position: absolute;
+            font-size: 8rem;
+            opacity: 0.1;
+            left: -30px;
+            top: -20px;
+            transform: rotate(-15deg);
+        }
+
+        .hero::after {
+            content: "🌻";
+            position: absolute;
+            font-size: 7rem;
+            opacity: 0.1;
+            right: -20px;
+            bottom: -30px;
+            transform: rotate(10deg);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-family: 'Dancing Script', cursive;
+            color: #d47b1a;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b45f1b;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            background: rgba(255,255,200,0.7);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Carta especial para ella */
+        .carta {
+            background: white;
+            border-radius: 35px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 2px solid #ffdd99;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .carta:hover {
+            transform: translateY(-5px);
+        }
+
+        .carta h2 {
+            font-size: 2.2rem;
+            color: #e6a017;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            margin-bottom: 1.5rem;
+        }
+
+        .carta-contenido {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: center;
+            font-style: italic;
+            color: #6b4c2c;
+            background: #fffef7;
+            padding: 1.5rem;
+            border-radius: 25px;
+            border-left: 5px solid #ffb347;
+            border-right: 5px solid #ffb347;
+        }
+
+        .firma {
+            text-align: right;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #d47b1a;
+        }
+
+        /* Galería romántica */
+        .gallery {
+            margin: 2rem 0;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            color: #e6a017;
+        }
+
+        .flower-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .flower-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .flower-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .flower-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .flower-card h3 {
+            margin: 1rem 0 0.5rem;
+            color: #d68c1f;
+        }
+
+        /* Mensaje de amor interactivo */
+        .mensaje-amor {
+            background: linear-gradient(135deg, #fff3e0, #ffe9ce);
+            border-radius: 35px;
+            padding: 2rem;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #ffb347, #ff9500);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            padding: 14px 32px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 1rem;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+
+        #mensajeDisplay {
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            background: white;
+            padding: 1.2rem;
+            border-radius: 50px;
+            color: #b45f1b;
+            font-weight: 500;
+            border: 2px solid #ffd966;
+            transition: all 0.3s;
+        }
+
+        /* Contador hasta el día especial */
+        .countdown {
+            background: linear-gradient(145deg, #ffe4a3, #ffd98c);
+            border-radius: 40px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .time-box {
+            background: white;
+            border-radius: 20px;
+            padding: 0.8rem 1.2rem;
+            min-width: 80px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        }
+
+        .time-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ff8c1a;
+        }
+
+        /* Botón sorpresa */
+        .sorpresa {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .btn-sorpresa {
+            background: #d47b1a;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: #f7e5c2;
+            text-align: center;
+            padding: 1.8rem;
+            margin-top: 2rem;
+            border-top: 2px solid #ffdb8e;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .carta-contenido {
+                font-size: 1rem;
+            }
+            .time-box {
+                min-width: 65px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="flowersContainer"></div>
+
+<section class="hero">
+    <h1>🌻 Para mi amor, [Nombre de ella] 🌻</h1>
+    <div class="subtitle">🌸 Las flores más hermosas son para la persona más hermosa 🌸</div>
+</section>
+
+<div class="container">
+    <!-- Carta personalizada -->
+    <div class="carta">
+        <h2>💌 Para el amor de mi vida 💌</h2>
+        <div class="carta-contenido">
+            <p>Mi amor,</p>
+            <p>Hoy te regalo estas flores amarillas no solo porque es su día, sino porque cada vez que las veo me recuerdan a ti: brillante, cálida, llena de luz y capaz de alegrar hasta el día más gris.</p>
+            <p>Así como la primavera trae vida y color, tú trajiste amor y felicidad a mi vida. Eres mi sol, mi razón para sonreír cada día.</p>
+            <p>Que estas flores amarillas sean un símbolo de todo lo que siento por ti, y que cada pétalo te recuerde lo especial que eres para mí.</p>
+            <p>Te amo con todo mi corazón. 💛</p>
+            <div class="firma">Con todo mi amor,<br>Tu [Tu nombre]</div>
+        </div>
+    </div>
+
+    
+
+    <!-- Mensajes de amor interactivos -->
+    <div class="mensaje-amor">
+        <h2>💛 Para ti, mi princesa 💛</h2>
+        <p>Cada vez que presiones el botón, recibirás un mensaje especial de mi corazón para el tuyo.</p>
+        <button id="fraseBtn">🌸 Dame un beso virtual 🌸</button>
+        <div id="mensajeDisplay">✨ Esperando que presiones para decirte cuánto te amo... ✨</div>
+    </div>
+
+    <!-- Contador para el 21 de MARZO - Día de las Flores Amarillas (Primavera) -->
+    <div class="countdown">
+        <h3>⏳ Faltan para nuestro próximo Día de las Flores Amarillas ⏳</h3>
+        <div class="timer" id="countdownTimer">
+            <div class="time-box"><span class="time-number" id="days">00</span><div class="time-label">Días</div></div>
+            <div class="time-box"><span class="time-number" id="hours">00</span><div class="time-label">Horas</div></div>
+            <div class="time-box"><span class="time-number" id="minutes">00</span><div class="time-label">Minutos</div></div>
+            <div class="time-box"><span class="time-number" id="seconds">00</span><div class="time-label">Segundos</div></div>
+        </div>
+        <p style="margin-top: 1rem;">🌼 21 de Marzo - Inicio de la primavera, flores amarillas y todo mi amor para ti 🌼</p>
+    </div>
+
+    <!-- Botón sorpresa -->
+    <div class="sorpresa">
+        <button class="btn-sorpresa" id="sorpresaBtn">🎁 Haz clic para una sorpresa especial 🎁</button>
+    </div>
+</div>
+
+<footer>
+    <p>💛 Para la mujer que ilumina mi vida - Te amo más de lo que las flores pueden expresar 💛</p>
+    <p>🌼 21 de Marzo - Día de las Flores Amarillas | Siempre serás mi primavera 🌼</p>
+</footer>
+
+<script>
+    // === PERSONALIZA AQUÍ ===
+    const NOMBRE_ELLA = "mi niña"; // Cambia por el nombre de tu novia
+    const TU_NOMBRE = "Tu viejito";   // Cambia por tu nombre
+    
+    // Actualizar los textos con los nombres
+    document.querySelector('.hero h1').innerHTML = `🌻 Para ${NOMBRE_ELLA}, mi amor 🌻`;
+    const firma = document.querySelector('.firma');
+    if(firma) firma.innerHTML = `Con todo mi amor,<br>${TU_NOMBRE}`;
+    
+    // Mensajes románticos personalizados
+    const mensajesRomanticos = [
+        `🌼 ${NOMBRE_ELLA}, eres la flor más hermosa de mi jardín. Gracias por existir. 🌼`,
+        `🌻 Cada vez que veo un girasol, pienso en ti: radiante, fuerte y llena de luz. Te amo. 🌻`,
+        `💛 Tu sonrisa es mi primavera eterna. Gracias por alegrar mis días. 💛`,
+        `🌸 Si las flores amarillas representan la alegría, tú representas mi felicidad completa. 🌸`,
+        `🌞 Eres mi sol en los días nublados, mi razón para sonreír cada mañana. Te amo, ${NOMBRE_ELLA}. 🌞`,
+        `⭐ Contigo descubrí que el amor no se busca, simplemente llega y florece como las flores en primavera. ⭐`,
+        `🌼 Prometo regalarte flores amarillas no solo hoy, sino cada día de nuestras vidas. 🌼`,
+        `💛 ${NOMBRE_ELLA}, gracias por ser la mujer más increíble. Eres mi todo. 💛`
+    ];
+    
+    // 1. Flores flotantes
+    function createFloatingFlower() {
+        const flowers = ['🌻', '🌼', '🌷', '💛', '⭐', '🌸', '🌺'];
+        const flower = document.createElement('div');
+        flower.classList.add('floating-flower');
+        flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+        flower.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
+        flower.style.left = `${Math.random() * 100}%`;
+        flower.style.animationDuration = `${Math.random() * 7 + 5}s`;
+        flower.style.animationDelay = `${Math.random() * 5}s`;
+        document.getElementById('flowersContainer').appendChild(flower);
+        setTimeout(() => flower.remove(), 12000);
+    }
+    
+    setInterval(createFloatingFlower, 1500);
+    for(let i = 0; i < 12; i++) setTimeout(createFloatingFlower, i * 300);
+    
+    // 2. Botón de mensajes románticos
+    const btn = document.getElementById('fraseBtn');
+    const mensajeDisplay = document.getElementById('mensajeDisplay');
+    
+    btn.addEventListener('click', () => {
+        const randomIndex = Math.floor(Math.random() * mensajesRomanticos.length);
+        mensajeDisplay.innerHTML = `💛 ${mensajesRomanticos[randomIndex]} 💛`;
+        mensajeDisplay.style.transform = "scale(1.02)";
+        setTimeout(() => mensajeDisplay.style.transform = "scale(1)", 300);
+        
+        // Crear lluvia de corazones
+        for(let i = 0; i < 8; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('div');
+                heart.innerText = '❤️';
+                heart.style.position = 'fixed';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.bottom = '0px';
+                heart.style.fontSize = '1.5rem';
+                heart.style.pointerEvents = 'none';
+                heart.style.animation = 'floatUp 1.5s ease-out forwards';
+                heart.style.zIndex = '999';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }, i * 50);
+        }
+    });
+    
+    // 3. Función para los mensajes al hacer clic en flores
+    window.mostrarSignificado = function(mensaje) {
+        mensajeDisplay.innerHTML = `💛 ${mensaje} 💛`;
+        mensajeDisplay.style.transform = "scale(1.02)";
+        setTimeout(() => mensajeDisplay.style.transform = "scale(1)", 300);
+        
+        // Animación extra
+        const tempMsg = document.createElement('div');
+        tempMsg.innerText = '💐';
+        tempMsg.style.position = 'fixed';
+        tempMsg.style.left = '50%';
+        tempMsg.style.top = '50%';
+        tempMsg.style.fontSize = '3rem';
+        tempMsg.style.transform = 'translate(-50%, -50%)';
+        tempMsg.style.pointerEvents = 'none';
+        tempMsg.style.opacity = '1';
+        tempMsg.style.transition = 'all 1s ease';
+        document.body.appendChild(tempMsg);
+        setTimeout(() => {
+            tempMsg.style.opacity = '0';
+            tempMsg.style.transform = 'translate(-50%, -80%) scale(1.5)';
+            setTimeout(() => tempMsg.remove(), 1000);
+        }, 50);
+    };
+    
+    // 4. Botón sorpresa
+    const sorpresaBtn = document.getElementById('sorpresaBtn');
+    sorpresaBtn.addEventListener('click', () => {
+        const sorpresas = [
+            `🎵 ${NOMBRE_ELLA}, eres la melodía más bonita de mi vida 🎵`,
+            `💍 Algún día quiero darte todas las flores amarillas del mundo... y también mi corazón para siempre 💍`,
+            `📖 Si nuestra historia fuera un libro, cada página estaría llena de flores amarillas y amor infinito 📖`,
+            `🌅 Contigo quiero ver todos los amaneceres, porque cada uno me recuerda lo afortunado que soy 🌅`,
+            `💌 ${NOMBRE_ELLA}, gracias por ser mi compañera, mi amiga y mi amor incondicional 💌`
+        ];
+        const randomSorpresa = sorpresas[Math.floor(Math.random() * sorpresas.length)];
+        mensajeDisplay.innerHTML = `✨🎁 ¡SORPRESA! 🎁✨<br><br>${randomSorpresa}`;
+        
+        // Crear lluvia de flores amarillas
+        for(let i = 0; i < 20; i++) {
+            setTimeout(() => {
+                const flower = document.createElement('div');
+                flower.innerText = '🌻';
+                flower.style.position = 'fixed';
+                flower.style.left = `${Math.random() * 100}%`;
+                flower.style.top = `-20px`;
+                flower.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
+                flower.style.animation = `floatUp ${Math.random() * 3 + 2}s linear forwards`;
+                flower.style.pointerEvents = 'none';
+                flower.style.zIndex = '999';
+                document.body.appendChild(flower);
+                setTimeout(() => flower.remove(), 4000);
+            }, i * 100);
+        }
+    });
+    
+    // 5. Contador hasta el 21 de MARZO
+    function updateCountdown() {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        // Marzo es mes 2 (0-index: 0=Enero, 1=Febrero, 2=Marzo)
+        let targetDate = new Date(currentYear, 2, 21); // 21 de marzo
+        
+        // Si ya pasó el 21 de marzo de este año, calcular para el próximo año
+        if (now > targetDate) {
+            targetDate = new Date(currentYear + 1, 2, 21);
+        }
+        
+        const diff = targetDate - now;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // Si es 21 de marzo, mostrar mensaje especial
+    const hoy = new Date();
+    if(hoy.getDate() === 21 && hoy.getMonth() === 2) { // Marzo es mes 2
+        const heroSection = document.querySelector('.hero');
+        const specialBanner = document.createElement('div');
+        specialBanner.style.background = '#ffd966';
+        specialBanner.style.marginTop = '1rem';
+        specialBanner.style.padding = '1rem';
+        specialBanner.style.borderRadius = '50px';
+        specialBanner.style.fontWeight = 'bold';
+        specialBanner.innerHTML = `🎉 ¡HOY ES EL DÍA! ${NOMBRE_ELLA}, estas flores amarillas son solo una pequeña muestra de lo mucho que te amo. ¡Feliz Día de las Flores Amarillas, mi amor! 🎉`;
+        heroSection.appendChild(specialBanner);
+    }
+    
+    // Animación de aparición
+    const elementos = document.querySelectorAll('.carta, .flower-card, .mensaje-amor, .countdown, .sorpresa');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    elementos.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+    
+    setTimeout(() => {
+        elementos.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if(rect.top < window.innerHeight - 100) {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }
+        });
+    }, 200);
+</script>
+</body>
+</html>
